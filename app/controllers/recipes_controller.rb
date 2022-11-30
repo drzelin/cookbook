@@ -13,6 +13,8 @@ class RecipesController < ApplicationController
     end
   end
 
+  def edit; end
+
   def index
     @recipes = Recipe.all.order('created_at DESC')
   end
@@ -22,6 +24,14 @@ class RecipesController < ApplicationController
   end
 
   def show; end
+
+  def update
+    if @recipe.update(recipe_params)
+      redirect_to @recipe
+    else
+      render 'edit'
+    end
+  end
 
   private
 

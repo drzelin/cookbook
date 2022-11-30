@@ -5,5 +5,18 @@
 
   <p class="date">
     Submitted <%= time_ago_in_words(@recipe.created_at) %> ago
+    | <%= link_to 'Edit', edit_recipe_path(@recipe) %>
   </p>
+
+  <p class="directions">
+    <%= @recipe.prep_time_in_mins %>
+  <p>
+
+  <p class="directions">
+    <%= @recipe.servings %>
+  <p>
+
+  <p class="directions">
+    <%= @recipe.directions %>
+  <p>
 </div>
