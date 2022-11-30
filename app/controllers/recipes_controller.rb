@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   before_action :find_recipe, only: [:destroy, :edit, :show, :update]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def create
     @recipe = Recipe.new(recipe_params)
