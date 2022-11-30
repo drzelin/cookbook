@@ -3,13 +3,22 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.save
 
-    redirect_to @recipe
+    if @recipe.save
+      redirect_to @recipe
+    else
+      # Render does not do an entirely new http refresh, redirect would so it
+      # would lose the data written
+      render 'new'
+    end
   end
 
   def index
     @recipes = Recipe.all.order('created_at DESC')
+  end
+
+  def new
+    @recipe = Recipe.new
   end
 
   def show; end
