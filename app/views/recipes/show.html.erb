@@ -4,8 +4,9 @@
   </h1>
 
   <p class="date">
-    Submitted <%= time_ago_in_words(@recipe.created_at) %> ago
-    <% if user_signed_in? %>
+    Submitted by <%= @recipe.user.first_name %> <%= @recipe.user.last_name %>
+    <%= time_ago_in_words(@recipe.created_at) %> ago
+    <% if user_signed_in? && @recipe.user_id == current_user.id %>
       | <%= link_to 'Edit', edit_recipe_path(@recipe) %>
       | <%= link_to 'Delete', recipe_path(@recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>

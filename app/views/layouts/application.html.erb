@@ -26,7 +26,11 @@
         <li><a href="mailto:daniellezelin@gmail.com">Email</a></li>
       </ul>
 
-      <% unless user_signed_in? %>
+      <% if user_signed_in? %>
+        <p class="sign_in">
+          Welcome <%= current_user.first_name %> <%= current_user.last_name %>
+        </p>
+      <% else %>
         <p class="sign_in"><%= link_to "Admin Login", "/users/sign_in" %></p>
       <% end %>
     </div>
