@@ -6,5 +6,10 @@ class Recipe < ApplicationRecord
 
   belongs_to :user
 
+  # NOTE: didn't use a has_and_belongs_to_many relationship b/w food items and
+  # recipes so we can add other columns to the ingredients table
+  has_many :ingredients
+  has_many :food_items, through: :ingredients
+
   delegate :email, to: :user
 end
