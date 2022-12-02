@@ -12,15 +12,20 @@
     <% end %>
   </p>
 
-  <p class="directions">
+  <h3> Prep time in minutes: </h3>
+  <p>
     <%= @recipe.prep_time_in_mins %>
   <p>
 
-  <p class="directions">
+  <h3> Servings: </h3>
+  <p>
     <%= @recipe.servings %>
   <p>
 
-  <p class="directions">
-    <%= @recipe.directions %>
-  <p>
+  <h3> Directions: </h3>
+  <%= @recipe.directions.each do |direction| %>
+    <p>
+      <%= direction.step_number %>. <%= direction.description %>
+    <p>
+  <% end %>
 </div>
