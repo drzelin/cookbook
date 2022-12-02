@@ -49,6 +49,8 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).
       permit(:directions, :name, :prep_time_in_mins, :servings,
-            directions_attributes: [:id, :description, :_destroy])
+        directions_attributes: [:id, :description, :_destroy],
+        ingredients_attributes: [:id, :amount, :unit, :_destroy,
+          food_item_attributes: [:id, :name]] )
   end
 end

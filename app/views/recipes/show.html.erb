@@ -22,8 +22,15 @@
     <%= @recipe.servings %>
   <p>
 
+  <h3> Ingredients: </h3>
+  <% @recipe.ingredients.each do |ingredient| %>
+    <p>
+      <%= ingredient.amount %> <%= ingredient.unit %> <%= ingredient.food_item.name %>
+    <p>
+  <% end %>
+
   <h3> Directions: </h3>
-  <%= @recipe.directions.each do |direction| %>
+  <% @recipe.directions.each do |direction| %>
     <p>
       <%= direction.step_number %>. <%= direction.description %>
     <p>

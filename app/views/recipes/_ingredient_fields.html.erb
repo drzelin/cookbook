@@ -1,0 +1,20 @@
+<div class="nested-fields">
+  <p class= "field">
+    <%= f.label :amount %>
+    <%= f.text_field :amount %>
+  </p>
+
+  <p class= "field">
+    <%= f.label :unit %>
+    <%= f.text_field :unit %>
+  </p>
+
+  <%= f.fields_for :food_item do |food_item| %>
+    <%= food_item.label :name, "Food Item" %>
+    <%= food_item.text_field :name %>
+  <% end %>
+
+  <p>
+    <%= link_to_remove_association "Remove Ingredient", f, class: "link" %>
+  </p>
+</div>
