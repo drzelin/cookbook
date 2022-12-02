@@ -23,7 +23,9 @@ class RecipesController < ApplicationController
   def edit; end
 
   def index
-    @recipes = Recipe.all.order('created_at DESC')
+    @q = Recipe.ransack(params[:q])
+    @recipes = @q.result(distinct: true).includes(:food_items).
+      order('created_at DESC')
   end
 
   def new
@@ -52,5 +54,9 @@ class RecipesController < ApplicationController
         directions_attributes: [:id, :description, :_destroy],
         ingredients_attributes: [:id, :amount, :unit, :_destroy,
           food_item_attributes: [:id, :name]] )
+  end
+
+  def search_params
+    params.require(:search)
   end
 end

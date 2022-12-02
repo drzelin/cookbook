@@ -1,3 +1,37 @@
+<%= search_form_for @q do |f| %>
+  <p>
+    <%= f.label :name_cont %>
+    <%= f.search_field :name_cont %>
+  </p>
+
+  <p>
+    <%= f.label :servings_lteq %>
+    <%= f.search_field :servings_lteq %>
+  </p>
+
+  <p>
+    <%= f.label :servings_gteq %>
+    <%= f.search_field :servings_gteq %>
+  </p>
+
+  <p>
+    <%= f.label :prep_time_in_mins_lteq %>
+    <%= f.search_field :prep_time_in_mins_lteq %>
+  </p>
+
+  <p>
+    <%= f.label :prep_time_in_mins_gteq %>
+    <%= f.search_field :prep_time_in_mins_gteq %>
+  </p>
+
+  <p>
+    <%= f.label :food_items_name_cont %>
+    <%= f.search_field :food_items_name_cont %>
+  </p>
+
+  <%= f.submit %>
+<% end %>
+
 <% @recipes.each do |recipe| %>
   <div class="recipe_wrapper">
     <h2 class="name"><%= link_to recipe.name, recipe %></h2>
@@ -9,5 +43,6 @@
     </p>
     <p class="prep_time">Prep Time: <%= recipe.prep_time_in_mins %> minutes</p>
     <p class="servings"><%= recipe.servings %> servings</p>
+    <p class="servings">Contains: <%= recipe.food_items.pluck(:name).to_sentence %></p>
   </div>
 <% end %>
