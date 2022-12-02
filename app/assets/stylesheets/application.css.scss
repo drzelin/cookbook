@@ -95,6 +95,25 @@ a {
     }
 }
 
+$link-color: #4478A6;
+$hover-color: darken($link-color, 20%);
+$visited-color: lighten($link-color, 20%);
+
+.link {
+  color: $link-color;
+  text-decoration: none;
+
+  &:hover{
+    color: $hover-color;
+    border-bottom: 1px solid $hover-color;
+  }
+
+  &:visited{
+    color: $visited-color;
+    border-color: $visited-color;
+  }
+}
+
 .clearfix:after {
     content: ".";
     visibility: hidden;
