@@ -1,6 +1,10 @@
 <div class="nested-fields">
   <p class= "field">
-    <%= f.label :description, "Food Item" %>
-    <%= f.text_field :description %>
+    <%= f.label :name, "Food Item" %><br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= link_to_remove_association "Don't Create New Food Item", f, class: "link" %>
   </p>
 </div>

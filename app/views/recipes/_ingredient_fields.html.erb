@@ -1,18 +1,21 @@
-<div class="nested-fields">
+<div class="nested-fields recipe_wrapper">
   <p class= "field">
-    <%= f.label :amount %>
+    <%= f.label :amount %><br>
     <%= f.text_field :amount %>
   </p>
 
   <p class= "field">
-    <%= f.label :unit %>
+    <%= f.label :unit %><br>
     <%= f.text_field :unit %>
   </p>
 
-  <%= f.fields_for :food_item do |food_item| %>
-    <%= food_item.label :name, "Food Item" %>
-    <%= food_item.text_field :name %>
+  <%= f.fields_for :food_item do |food_item_form| %>
+    <%= render 'food_item_fields', f: food_item_form %>
   <% end %>
+
+  <p>
+    <%= link_to_add_association 'Add Food Item', f, :food_item %>
+  </p>
 
   <p>
     <%= link_to_remove_association "Remove Ingredient", f, class: "link" %>

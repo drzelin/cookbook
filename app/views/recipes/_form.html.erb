@@ -29,13 +29,11 @@
 
   <div>
     <%= recipe_form.fields_for :ingredients do |ingredient_form| %>
-      <%= ingredient_form.fields_for :food_item do |food_item_form| %>
-        <%= render 'ingredient_fields', f: ingredient_form, g: food_item_form %>
-      <% end %>
+      <%= render 'ingredient_fields', f: ingredient_form %>
     <% end %>
 
     <p>
-      <%= link_to_add_association 'Add Ingredient', recipe_form, :ingredients, wrap_object: Proc.new { |ingredient_form| ingredient_form.build_food_item; ingredient_form } %>
+      <%= link_to_add_association 'Add Ingredient', recipe_form, :ingredients, wrap_object: Proc.new {|ingredient| ingredient.build_food_item; ingredient }, class: "link" %>
     </p>
   </div>
 
