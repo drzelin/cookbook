@@ -11,8 +11,8 @@
 
   <%= f.fields_for :food_item do |food_item_form| %>
     <!--
-      <%= food_item_form.label :name%> 
-      <%= food_item_form.select :options_from_collection_for_select(FoodItem.all, :name, :name), { include_blank: true } %>
+      <%= food_item_form.label :name %>
+      <%= food_item_form.select :name, options_from_collection_for_select(FoodItem.all, :name, :name), { include_blank: true } %>
     -->
 
     <%= render 'food_item_fields', f: food_item_form %>
