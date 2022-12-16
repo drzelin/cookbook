@@ -4,6 +4,12 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
+
+    binding.pry
+    # Ideally we'd ensure we grab an existing food item on the frontend rather 
+    # than "sanitize" it on the backend but going to do this for now in the
+    # interest of time
+    @recipe.ingredients = sanitize_ingredients(@recipe.ingredients)
     @recipe.user_id = current_user.id
 
     if @recipe.save
@@ -54,6 +60,13 @@ class RecipesController < ApplicationController
         directions_attributes: [:id, :description, :_destroy],
         ingredients_attributes: [:id, :amount, :unit, :_destroy,
           food_item_attributes: [:id, :name]] )
+  end
+
+  def sanitize_ingredients(ingredients)
+    ingredients.each do |ingredient|
+      food_item = ingredient.food_item
+      ingredient.food_item = FoodItem.find_by(name: food_item.name) || food_item
+    end
   end
 
   def search_params
