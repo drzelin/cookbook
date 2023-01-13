@@ -1,0 +1,12 @@
+<div>
+  <% if user_signed_in? %>
+    <p class="category">
+      Welcome <%= current_user.first_name %> <%= current_user.last_name %>
+    </p>
+
+    <div class="buttons">
+      <button class="button"><%= link_to "New Recipe", new_recipe_path %></button>
+    </div>
+    <br>
+  <% end %>
+</div>

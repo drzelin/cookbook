@@ -1,44 +1,4 @@
-<div id="sidebar">
-  <div class="category">
-    Filter Recipes
-  </div>
-
-  <div>
-    <%= search_form_for @q do |f| %>
-      <p>
-        <%= f.label :name_cont, "Name" %><br>
-        <%= f.search_field :name_cont %>
-      </p>
-
-      <p>
-        <%= f.label :servings_lteq, "Max Serving Count" %><br>
-        <%= f.search_field :servings_lteq %>
-      </p>
-
-      <p>
-        <%= f.label :servings_gteq, "Min Serving Count" %><br>
-        <%= f.search_field :servings_gteq %>
-      </p>
-
-      <p>
-        <%= f.label :prep_time_in_mins_lteq, "Max Prep Time" %><br>
-        <%= f.search_field :prep_time_in_mins_lteq %>
-      </p>
-
-      <p>
-        <%= f.label :prep_time_in_mins_gteq, "Min Prep Time" %><br>
-        <%= f.search_field :prep_time_in_mins_gteq %>
-      </p>
-
-      <p>
-        <%= f.label :food_items_name_cont_any, "Contains Food Item" %><br>
-        <%= f.select(:food_items_name_cont_any, options_for_select(FoodItem.pluck(:name), f.object.food_items_name_cont_any), { include_blank: true }, { class: "form-control", multiple: true }) %>
-      </p>
-
-      <%= f.submit %>
-    <% end %>
-  </div>
-</div>
+<%= render "sidebar_index" %>
 
 <% @recipes.each do |recipe| %>
   <div class="recipe_wrapper">
